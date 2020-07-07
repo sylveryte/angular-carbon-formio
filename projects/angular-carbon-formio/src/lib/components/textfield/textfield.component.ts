@@ -2,6 +2,58 @@ import { Component, OnInit, AfterContentInit } from "@angular/core";
 import TextFieldComponent from "formiojs/components/textfield/TextField.js";
 import { CarbonComponent } from "../CarbonComponent";
 
+// syl short this out below is copy of html file
+export const TEXTFIELD_TEMPLATE = `
+<ibm-formio-form-field
+  [instance]="instance"
+  [componentTemplate]="componentTemplate"
+></ibm-formio-form-field>
+<ng-template #componentTemplate let-hasLabel>
+  <ibm-label fxFill>
+    <ibm-label *ngIf="hasLabel">
+      <span [instance]="instance" ibmFormioLabel></span>
+    </ibm-label>
+
+    <!-- syl matPrefix -->
+    <span *ngIf="instance.component.prefix && instance.type !== 'currency'">
+      {{ instance.component.prefix }}&nbsp;
+    </span>
+    <input
+      ibmText
+      type="{{ inputType }}"
+      [formControl]="control"
+      [placeholder]="instance.component.placeholder"
+      (input)="onChange()"
+      #input
+    />
+    <span *ngIf="instance.component.suffix" matSuffix>{{
+      instance.component.suffix
+    }}</span>
+
+    <ibm-label
+      *ngIf="
+        instance.component.showWordCount || instance.component.showCharCount
+      "
+      [invalid]="isError()"
+      [invalidText]="getErrorMessage()"
+    >
+      <!--   {{ getHint() }} -->
+    </ibm-label>
+
+    <!-- SYL DONE -->
+    <!-- <mat-hint -->
+    <!--   *ngIf=" -->
+    <!--     instance.component.showWordCount || instance.component.showCharCount -->
+    <!--   " -->
+    <!-- > -->
+    <!--   {{ getHint() }} -->
+    <!-- </mat-hint> -->
+    <!-- <br /> -->
+    <!-- <mat-error *ngIf="isError()">{{ getErrorMessage() }}</mat-error> -->
+  </ibm-label>
+</ng-template>
+`;
+
 @Component({
   selector: "ibm-formio-textfield",
   templateUrl: "./textfield.component.html",

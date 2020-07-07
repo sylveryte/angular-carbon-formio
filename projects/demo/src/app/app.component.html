@@ -14,16 +14,17 @@
         Update
       </button>
     </div>
+    <h2>Submitted Data</h2>
+    <div class="sub" rows="30" cols="30">
+      <textarea ibmTextArea type="text">{{ submittedData | json }}</textarea>
+    </div>
 
     <h2>Rendered Form by Carbon Formio</h2>
-    <carbon-formio [form]="defaultValue"></carbon-formio>
-    <h2>Submission Data</h2>
-      <div class="sub" rows="10" cols="30">
-      	<textarea ibmTextArea type="text" >{{
-      	  submissionData | json
-      	}}</textarea>
-      </div>
-    <h2>Router Outlet</h2>
-    <router-outlet></router-outlet>
+    <carbon-formio
+      [form]="defaultValue"
+      (submit)="onSubmit($event)"
+    ></carbon-formio>
+    <!-- <h2>Router Outlet</h2> -->
+    <!-- <router-outlet></router-outlet> -->
   </div>
 </div>

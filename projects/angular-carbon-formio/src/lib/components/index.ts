@@ -1,33 +1,33 @@
-const Components = require('formiojs/components/Components').default;
-import Component from 'formiojs/components/_classes/component/Component.js';
+const Components = require("formiojs/components/Components").default;
+import Component from "formiojs/components/_classes/component/Component.js";
 
-import { FormioComponent } from './CarbonComponent';
-import { TextFieldComponent } from './textfield/textfield.component';
-import { ButtonComponent } from './button/button.component';
-// import { PasswordComponent } from './password/password.component';
-// import { EmailComponent } from './email/email.component';
+import { FormioComponent } from "./CarbonComponent";
+import { TextFieldComponent } from "./textfield/textfield.component";
+import { ButtonComponent } from "./button/button.component";
+import { PasswordComponent } from "./password/password.component";
+import { EmailComponent } from "./email/email.component";
 // import { UrlComponent } from './url/url.component';
-// import { PhoneNumberComponent } from './phonenumber/phonenumber.component';
-// import { NumberComponent } from './number/number.component';
-// import { CurrencyComponent } from './currency/currency.component';
+import { PhoneNumberComponent } from "./phonenumber/phonenumber.component";
+import { NumberComponent } from "./number/number.component";
+import { CurrencyComponent } from "./currency/currency.component";
 // import { DayComponent } from './day/day.component';
 // import { HiddenComponent } from './hidden/hidden.component';
-// import { HtmlComponent } from './html/html.component';
+import { HtmlComponent } from "./html/html.component";
 // import { TagsComponent } from './tags/tags.component';
-// import { TextAreaComponent } from './textarea/textarea.component';
+import { TextAreaComponent } from './textarea/textarea.component';
 // import { PanelComponent } from './panel/panel.component';
-// import { ColumnsComponent } from './columns/columns.component';
-// import { ContainerComponent } from './container/container.component';
+import { ColumnsComponent } from "./columns/columns.component";
+import { ContainerComponent } from "./container/container.component";
 // import { TabsComponent } from './tabs/tabs.component';
 // import { DateTimeComponent } from './date/date.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CheckboxComponent } from "./checkbox/checkbox.component";
 // import { FieldsetComponent } from './fieldset/fieldset.component';
-// import { ContentComponent } from './content/content.component';
+import { ContentComponent } from "./content/content.component";
 // import { SignatureComponent } from './signature/signature.component';
 // import { SurveyComponent } from './survey/survey.component';
-// import { SelectBoxesComponent } from './selectboxes/selectboxes.component';
-// import { RadioComponent } from './radio/radio.component';
-// import { SelectComponent } from './select/select.component';
+import { SelectBoxesComponent } from './selectboxes/selectboxes.component';
+import { RadioComponent } from "./radio/radio.component";
+import { SelectComponent } from "./select/select.component";
 // import { WellComponent } from './well/well.component';
 // import { DataGridComponent } from './datagrid/datagrid.component';
 // import { EditGridComponent } from './editgrid/editgrid.component';
@@ -40,32 +40,32 @@ const components: any = {
   textfield: TextFieldComponent,
   button: ButtonComponent,
   unknown: FormioComponent,
-  // password: PasswordComponent,
+  password: PasswordComponent,
   // url: UrlComponent,
   checkbox: CheckboxComponent,
-  // email: EmailComponent,
-  // phoneNumber: PhoneNumberComponent,
-  // number: NumberComponent,
-  // currency: CurrencyComponent,
+  email: EmailComponent,
+  phoneNumber: PhoneNumberComponent,
+  number: NumberComponent,
+  currency: CurrencyComponent,
   // day: DayComponent,
   // hidden: HiddenComponent,
-  // htmlelement: HtmlComponent,
+  htmlelement: HtmlComponent,
   // tags: TagsComponent,
-  // textarea: TextAreaComponent,
+  textarea: TextAreaComponent,
   // datetime: DateTimeComponent,
   // panel: PanelComponent,
-  // columns: ColumnsComponent,
+  columns: ColumnsComponent,
   // tabs: TabsComponent,
   // table: TableComponent,
   // well: WellComponent,
   // fieldset: FieldsetComponent,
-  // content: ContentComponent,
+  content: ContentComponent,
   // signature: SignatureComponent,
   // survey: SurveyComponent,
-  // selectboxes: SelectBoxesComponent,
-  // radio: RadioComponent,
-  // select: SelectComponent,
-  // container: ContainerComponent,
+  selectboxes: SelectBoxesComponent,
+  radio: RadioComponent,
+  select: SelectComponent,
+  container: ContainerComponent,
   // datagrid: DataGridComponent,
   // editgrid: EditGridComponent,
   // time: TimeComponent,
@@ -75,27 +75,31 @@ const components: any = {
 export function getComponents() {
   for (const type of Object.keys(components)) {
     const CompClass = components[type];
-    CompClass.prototype.render = (function () {
+    CompClass.prototype.render = function () {
       if (this.carbonComponent) {
         return this.carbonComponent.renderComponents();
       }
 
-      const viewContainer = this.parent ? this.parent.viewContainer(this) : this.viewContainer(this);
+      const viewContainer = this.parent
+        ? this.parent.viewContainer(this)
+        : this.viewContainer(this);
       if (!viewContainer) {
         return;
       }
-      const factory = this.options.viewResolver.resolveComponentFactory(CompClass.CarbonComponent);
+      const factory = this.options.viewResolver.resolveComponentFactory(
+        CompClass.CarbonComponent
+      );
       const componentRef = viewContainer.createComponent(factory);
       (componentRef.instance as any).setInstance(this);
-    });
+    };
 
     const setValue = CompClass.prototype.setValue;
-    CompClass.prototype.setValue = (function (...args) {
+    CompClass.prototype.setValue = function (...args) {
       if (this.carbonComponent) {
         this.carbonComponent.setValue(args[0]);
       }
       return setValue.call(this, ...args);
-    });
+    };
 
     components[type] = CompClass;
   }
@@ -104,32 +108,34 @@ export function getComponents() {
 }
 
 export function registerComponent(name: string, CompClass: any) {
-
-  class DummyComponent extends Component {};
-  const formIOComp = (DummyComponent as any);
+  class DummyComponent extends Component {}
+  const formIOComp = DummyComponent as any;
 
   formIOComp.CarbonComponent = CompClass;
-  formIOComp.prototype.render = (function () {
+  formIOComp.prototype.render = function () {
     if (this.carbonComponent) {
       return this.carbonComponent;
     }
-    const viewContainer = this.parent ? this.parent.viewContainer(this) : this.viewContainer(this);
+    const viewContainer = this.parent
+      ? this.parent.viewContainer(this)
+      : this.viewContainer(this);
     if (!viewContainer) {
       return;
     }
-    const factory = this.options.viewResolver.resolveComponentFactory(formIOComp.CarbonComponent);
+    const factory = this.options.viewResolver.resolveComponentFactory(
+      formIOComp.CarbonComponent
+    );
     const componentRef = viewContainer.createComponent(factory);
     (componentRef.instance as any).setInstance(this);
-  });
+  };
 
   const setValue = formIOComp.prototype.setValue;
-  formIOComp.prototype.setValue = (function (...args) {
+  formIOComp.prototype.setValue = function (...args) {
     if (this.carbonComponent) {
       this.carbonComponent.setValue(args[0]);
     }
     return setValue.call(this, ...args);
-  });
+  };
 
   Components.addComponent(name, formIOComp);
-
 }

@@ -3,6 +3,11 @@
   display: block;
 }
 
+.label {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+}
+
 .required-star {
   margin-left: 0.2rem;
   color: red;

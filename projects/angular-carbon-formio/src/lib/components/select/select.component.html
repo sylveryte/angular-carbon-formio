@@ -1,0 +1,47 @@
+<ibm-formio-form-field
+  [instance]="instance"
+  [componentTemplate]="componentTemplate"
+></ibm-formio-form-field>
+<ng-template #componentTemplate let-hasLabel>
+  <!-- <mat-form-field fxFill> -->
+  <ibm-label *ngIf="hasLabel">
+    <span [instance]="instance" ibmFormioLabel></span>
+  </ibm-label>
+
+  <span *ngIf="instance.component.prefix" matPrefix>
+    {{ instance.component.prefix }}&nbsp;
+  </span>
+
+  <!-- syl -->
+  <!-- [placeholder]="instance.component.placeholder" -->
+  <!-- [multiple]="instance.component.multiple" -->
+  <ibm-select [formControl]="control" (selectionChange)="onChange()">
+    <div class="mat-option">
+      <input
+        class="mat-input-element"
+        placeholder="Type to search"
+        (input)="onFilter($event.target.value)"
+      />
+    </div>
+    <!-- <option></option> -->
+    <!-- <option *ngIf="!filteredOptionsLength" disabled> -->
+    <!--   <span>Nothing was found</span> -->
+    <!-- </option> -->
+    <option
+      *ngFor="let option of instance.component.data.values"
+      [value]="option.value"
+    >
+	{{option.label}}
+      <!-- <span [innerHTML]="option.label"></span> -->
+    </option>
+  </ibm-select>
+
+  <span *ngIf="instance.component.suffix" matSuffix>
+    {{ instance.component.suffix }}
+  </span>
+  <!-- syl this was mat error -->
+  <span style="color: red; font-size: 0.6rem;" *ngIf="instance.error">{{
+    instance.error.message
+  }}</span>
+  <!-- </mat-form-field> -->
+</ng-template>

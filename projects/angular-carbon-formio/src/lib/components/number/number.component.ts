@@ -1,16 +1,30 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
-import { CarbonTextfieldComponent, TEXTFIELD_TEMPLATE } from '../textfield/textfield.component';
-import NumberComponent from 'formiojs/components/number/Number.js';
-import _ from 'lodash';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Renderer2,
+} from "@angular/core";
+import {
+  CarbonTextfieldComponent,
+  TEXTFIELD_TEMPLATE,
+} from "../textfield/textfield.component";
+import NumberComponent from "formiojs/components/number/Number.js";
+import _ from "lodash";
 
 @Component({
-  selector: 'mat-formio-number',
-  template: TEXTFIELD_TEMPLATE
+  selector: "ibm-formio-number",
+  template: TEXTFIELD_TEMPLATE,
 })
-export class MaterialNumberComponent extends CarbonTextfieldComponent implements AfterViewInit {
-  public inputType = 'text';
+export class CarbonNumberComponent extends CarbonTextfieldComponent
+  implements AfterViewInit {
+  public inputType = "text";
 
-  constructor(public element: ElementRef, public ref: ChangeDetectorRef, private renderer: Renderer2) {
+  constructor(
+    public element: ElementRef,
+    public ref: ChangeDetectorRef,
+    private renderer: Renderer2
+  ) {
     super(element, ref);
   }
 
@@ -19,21 +33,22 @@ export class MaterialNumberComponent extends CarbonTextfieldComponent implements
     if (this.instance) {
       const { instance } = this;
 
-        this.renderer.listen(this.input.nativeElement, 'blur', () => {
-          let value = instance.parseValue(this.control.value);
-          value = instance.formatValue(value);
-          value = instance.getValueAsString(value);
-          this.control.setValue(value);
-        });
-
+      this.renderer.listen(this.input.nativeElement, "blur", () => {
+        let value = instance.parseValue(this.control.value);
+        value = instance.formatValue(value);
+        value = instance.getValueAsString(value);
+        this.control.setValue(value);
+      });
     }
   }
 
   getValue() {
     let value = this.control.value;
     if (value && this.instance) {
-      value = value.replace(this.instance.prefix, '');
-      return !_.isNil(value) && value !== '' ? this.instance.parseNumber(value) : value;
+      value = value.replace(this.instance.prefix, "");
+      return !_.isNil(value) && value !== ""
+        ? this.instance.parseNumber(value)
+        : value;
     }
     return value;
   }
@@ -42,8 +57,7 @@ export class MaterialNumberComponent extends CarbonTextfieldComponent implements
     if (this.instance) {
       const { instance } = this;
       value = instance.formatValue(instance.parseValue(value));
-    }
-    else {
+    } else {
       value = value.toString();
     }
 
@@ -54,5 +68,5 @@ export class MaterialNumberComponent extends CarbonTextfieldComponent implements
     super.onChange(true);
   }
 }
-NumberComponent.CarbonComponent = MaterialNumberComponent;
+NumberComponent.CarbonComponent = CarbonNumberComponent;
 export { NumberComponent };

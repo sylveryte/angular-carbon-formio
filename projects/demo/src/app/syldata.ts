@@ -1,4 +1,4 @@
-export let value = {
+export const value0 = {
   components: [
     {
       label: "Name",
@@ -169,6 +169,183 @@ export let value = {
       type: "radio",
       input: true,
       defaultValue: "new",
+    },
+    {
+      type: "button",
+      label: "Submit",
+      key: "submit",
+      disableOnInvalid: true,
+      input: true,
+      tableView: false,
+    },
+  ],
+};
+
+export const value1 = {
+  components: [
+    {
+      label: "First Name",
+      placeholder: "eg Dragonite",
+      tableView: true,
+      key: "firstName",
+      type: "textfield",
+      input: true,
+      validate: {
+        required: true,
+      },
+    },
+    {
+      label: "Has a master",
+      tableView: false,
+      key: "hasAMaster",
+      type: "checkbox",
+      input: true,
+      defaultValue: false,
+    },
+    {
+      label: "About me",
+      placeholder: "Describe your special abilities",
+      autoExpand: false,
+      tableView: true,
+      key: "aboutMe",
+      type: "textarea",
+      input: true,
+    },
+    {
+      label: "Age",
+      placeholder: "eg: 5",
+      description: "Enter your age",
+      mask: false,
+      spellcheck: true,
+      tableView: false,
+      delimiter: false,
+      requireDecimal: false,
+      inputFormat: "plain",
+      key: "age",
+      type: "number",
+      input: true,
+    },
+    {
+      label: "Gender",
+      optionsLabelPosition: "right",
+      inline: false,
+      tableView: false,
+      values: [
+        {
+          label: "Male",
+          value: "male",
+          shortcut: "",
+        },
+        {
+          label: "Female",
+          value: "female",
+          shortcut: "",
+        },
+        {
+          label: "Other",
+          value: "other",
+          shortcut: "",
+        },
+      ],
+      key: "gender",
+      type: "radio",
+      input: true,
+    },
+    {
+      label: "Secret Word",
+      placeholder: "Enter your secret word",
+      description: "we'll keep it secret",
+      tableView: false,
+      key: "secretWord",
+      type: "password",
+      input: true,
+      protected: true,
+    },
+    {
+      label: "Type",
+      optionsLabelPosition: "right",
+      description: "Select your ability types",
+      tableView: false,
+      values: [
+        {
+          label: "Electric",
+          value: "electric",
+          shortcut: "",
+        },
+        {
+          label: "Water",
+          value: "water",
+          shortcut: "",
+        },
+        {
+          label: "Fire",
+          value: "fire",
+          shortcut: "",
+        },
+        {
+          label: "Grass",
+          value: "grass",
+          shortcut: "",
+        },
+        {
+          label: "Rock",
+          value: "rock",
+          shortcut: "",
+        },
+      ],
+      key: "type",
+      type: "selectboxes",
+      input: true,
+      inputType: "checkbox",
+      defaultValue: {
+        "": false,
+      },
+    },
+    {
+      label: "House",
+      placeholder: "House you belong to",
+      description: "Your house",
+      tableView: true,
+      data: {
+        values: [
+          {
+            label: "Red",
+            value: "red",
+          },
+          {
+            label: "Blue",
+            value: "blue",
+          },
+          {
+            label: "Green",
+            value: "green",
+          },
+          {
+            label: "Pink",
+            value: "pink",
+          },
+          {
+            label: "Black",
+            value: "black",
+          },
+        ],
+      },
+      selectThreshold: 0.3,
+      key: "house",
+      type: "select",
+      indexeddb: {
+        filter: {},
+      },
+      input: true,
+    },
+    {
+      label: "Reset",
+      action: "reset",
+      showValidations: false,
+      tableView: false,
+      key: "reset",
+      type: "button",
+      input: true,
     },
     {
       type: "button",

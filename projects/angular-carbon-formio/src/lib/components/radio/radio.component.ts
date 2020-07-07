@@ -3,37 +3,10 @@ import { CarbonComponent } from '../CarbonComponent';
 import RadioComponent from 'formiojs/components/radio/Radio.js';
 
 @Component({
-  selector: 'mat-formio-radio',
-  template: `
-    <ibm-formio-form-field [instance]="instance" [componentTemplate]="componentTemplate"></ibm-formio-form-field>
-    <ng-template #componentTemplate let-hasLabel>
-      <div fxLayout="column">
-        <mat-label *ngIf="hasLabel">
-          <span [instance]="instance" ibmFormioLabel></span>
-        </mat-label>
-
-        <mat-radio-group
-                (change)="onChange()"
-                [formControl]="control"
-                fxFlexOffset="10px"
-                fxLayout="{{ getLayout() }}"
-                fxLayoutGap="10px"
-        >
-          <mat-radio-button *ngFor="let option of instance.component.values"
-                            value="{{ option.value }}"
-                            [checked]="isRadioChecked(option)"
-                            (keyup.space)="clearValue($event, option)"
-                            (click)="clearValue($event, option)"
-          >
-            {{ option.label }}
-          </mat-radio-button>
-          <mat-error *ngIf="instance.error">{{ instance.error.message }}</mat-error>
-        </mat-radio-group>
-      </div>
-    </ng-template>
-  `
+  selector: 'ibm-formio-radio',
+	templateUrl: './radio.component.html'
 })
-export class MaterialRadioComponent extends CarbonComponent {
+export class CarbonRadioComponent extends CarbonComponent {
   getLayout() {
     return this.instance.component.inline ? 'row' : 'column';
   }
@@ -55,5 +28,5 @@ export class MaterialRadioComponent extends CarbonComponent {
     });
   }
 }
-RadioComponent.CarbonComponent = MaterialRadioComponent;
+RadioComponent.CarbonComponent = CarbonRadioComponent;
 export { RadioComponent };

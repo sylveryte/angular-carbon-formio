@@ -3,10 +3,10 @@ import { CarbonComponent } from '../CarbonComponent';
 import HtmlComponent from 'formiojs/components/html/HTML.js';
 
 @Component({
-  selector: 'mat-formio-html',
+  selector: 'ibm-formio-html',
   template: `<div #htmlBody></div>`
 })
-export class MaterialHtmlComponent extends CarbonComponent implements AfterViewInit {
+export class CarbonHtmlComponent extends CarbonComponent implements AfterViewInit {
   @ViewChild('htmlBody', {static: false}) htmlBody: ElementRef;
 
   ngAfterViewInit() {
@@ -18,5 +18,5 @@ export class MaterialHtmlComponent extends CarbonComponent implements AfterViewI
     }
   }
 }
-HtmlComponent.CarbonComponent = MaterialHtmlComponent;
+HtmlComponent.CarbonComponent = CarbonHtmlComponent;
 export { HtmlComponent };

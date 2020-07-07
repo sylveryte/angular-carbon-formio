@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CarbonTextfieldComponent, TEXTFIELD_TEMPLATE } from '../textfield/textfield.component';
 import PhoneNumberComponent from 'formiojs/components/phonenumber/PhoneNumber.js';
 @Component({
-  selector: 'mat-formio-phonenumber',
+  selector: 'ibm-formio-phonenumber',
   template: TEXTFIELD_TEMPLATE
 })
-export class MaterialPhoneNumberComponent extends CarbonTextfieldComponent {
+export class CarbonPhoneNumberComponent extends CarbonTextfieldComponent {
   public inputType = 'text';
 }
-PhoneNumberComponent.CarbonComponent = MaterialPhoneNumberComponent;
+PhoneNumberComponent.CarbonComponent = CarbonPhoneNumberComponent;
 export { PhoneNumberComponent };

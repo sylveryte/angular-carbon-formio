@@ -64,12 +64,12 @@
   </span>
 
   <!-- syl this was mat-hint -->
-  <ibm-label
+  <span
     *ngIf="showDescription && instance.component.description"
     class="mat-formio-component-description"
   >
     {{ instance.component.description }}
-  </ibm-label>
+  </span>
 </div>
 
 <div class="mat-formio-component-wrapper" *ngIf="renderElementOnly">

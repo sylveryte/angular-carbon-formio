@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { value as DEFAULT_VALUE } from "./syldata";
+import { value1 as DEFAULT_VALUE } from "./syldata";
 
 @Component({
   selector: "app-root",
@@ -9,10 +9,14 @@ import { value as DEFAULT_VALUE } from "./syldata";
 export class AppComponent {
   title = "Carbon Formio Demo";
   defaultValue = DEFAULT_VALUE;
-  submissionData: string;
+  submittedData: string;
 
   update(value: string): void {
     this.defaultValue = JSON.parse(value);
     console.log(JSON.parse(value));
+  }
+
+  onSubmit(event: any) {
+    this.submittedData = event.data;
   }
 }

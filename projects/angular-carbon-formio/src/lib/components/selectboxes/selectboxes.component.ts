@@ -1,35 +1,11 @@
-import { Component } from '@angular/core';
-import { MaterialRadioComponent } from '../radio/radio.component';
-import SelectBoxesComponent from 'formiojs/components/selectboxes/SelectBoxes.js';
+import { Component } from "@angular/core";
+import { CarbonRadioComponent } from "../radio/radio.component";
+import SelectBoxesComponent from "formiojs/components/selectboxes/SelectBoxes.js";
 @Component({
-  selector: 'mat-formio-selectboxes',
-  template: `
-    <ibm-formio-form-field [instance]="instance" [componentTemplate]="componentTemplate"></ibm-formio-form-field>
-    <ng-template #componentTemplate let-hasLabel>
-      <div fxLayout="column">
-        <mat-label *ngIf="hasLabel">
-          <span [instance]="instance" ibmFormioLabel></span>
-        </mat-label>
-        <div
-                fxFlexOffset="10px"
-                fxLayout="{{ getLayout() }}"
-                fxLayoutGap="10px"
-        >
-          <mat-checkbox
-                  *ngFor="let option of instance.component.values"
-                  (change)="onChange()"
-                  [(ngModel)]="value[option.value]"
-                  [disabled]="disabled"
-          >
-            {{ option.label }}
-          </mat-checkbox>
-          <mat-error *ngIf="instance.error">{{ instance.error.message }}</mat-error>
-        </div>
-      </div>
-    </ng-template>
-  `
+  selector: "ibm-formio-selectboxes",
+  templateUrl: "./selectboxes.component.html",
 })
-export class MaterialSelectBoxesComponent extends MaterialRadioComponent {
+export class CarbonSelectBoxesComponent extends CarbonRadioComponent {
   public value: any = {};
   public disabled = false;
 
@@ -58,9 +34,9 @@ export class MaterialSelectBoxesComponent extends MaterialRadioComponent {
   }
 
   onChange() {
-    this.instance.updateValue(this.getValue(), {modified: true});
-    this.instance.triggerChange({modified: true});
+    this.instance.updateValue(this.getValue(), { modified: true });
+    this.instance.triggerChange({ modified: true });
   }
 }
-SelectBoxesComponent.CarbonComponent = MaterialSelectBoxesComponent;
+SelectBoxesComponent.CarbonComponent = CarbonSelectBoxesComponent;
 export { SelectBoxesComponent };

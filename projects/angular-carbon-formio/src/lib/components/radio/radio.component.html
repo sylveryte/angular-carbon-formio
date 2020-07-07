@@ -1,0 +1,33 @@
+<ibm-formio-form-field
+  [instance]="instance"
+  [componentTemplate]="componentTemplate"
+></ibm-formio-form-field>
+<ng-template #componentTemplate let-hasLabel>
+  <div fxLayout="column">
+    <ibm-label *ngIf="hasLabel">
+      <span [instance]="instance" ibmFormioLabel></span>
+    </ibm-label>
+
+    <ibm-radio-group
+      (change)="onChange()"
+      [formControl]="control"
+      fxFlexOffset="10px"
+      fxLayout="{{ getLayout() }}"
+      fxLayoutGap="10px"
+    >
+      <ibm-radio
+        *ngFor="let option of instance.component.values"
+        value="{{ option.value }}"
+        [checked]="isRadioChecked(option)"
+        (keyup.space)="clearValue($event, option)"
+        (click)="clearValue($event, option)"
+      >
+        {{ option.label }}
+      </ibm-radio>
+      <!-- syl this was mat-error -->
+      <span style="color: red; font-size: 0.6rem;" *ngIf="instance.error">{{
+        instance.error.message
+      }}</span>
+    </ibm-radio-group>
+  </div>
+</ng-template>

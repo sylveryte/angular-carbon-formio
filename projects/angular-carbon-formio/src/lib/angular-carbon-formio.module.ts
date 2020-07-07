@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { initRenderer } from "./renderer";
 import { FormioComponent } from "./formio.component";
@@ -12,27 +13,27 @@ import { LabelComponent } from "./components/label/label.component";
 import { CarbonNestedComponent } from "./components/CarbonNestedComponent";
 // import { MaterialButtonComponent } from './components/button/button.component';
 import { CarbonTextfieldComponent } from "./components/textfield/textfield.component";
-// import { MaterialPasswordComponent } from './components/password/password.component';
+import { CarbonPasswordComponent } from "./components/password/password.component";
 // import { MaterialUrlComponent } from './components/url/url.component';
-// import { MaterialEmailComponent } from './components/email/email.component';
-// import { MaterialPhoneNumberComponent } from './components/phonenumber/phonenumber.component';
-// import { MaterialNumberComponent } from './components/number/number.component';
+import { CarbonEmailComponent } from "./components/email/email.component";
+import { CarbonPhoneNumberComponent } from "./components/phonenumber/phonenumber.component";
+import { CarbonNumberComponent } from "./components/number/number.component";
 // import { MaterialHiddenComponent } from './components/hidden/hidden.component';
-// import { MaterialHtmlComponent } from './components/html/html.component';
+import { CarbonHtmlComponent } from "./components/html/html.component";
 // import { MaterialTagsComponent } from './components/tags/tags.component';
-// import { MaterialCurrencyComponent } from './components/currency/currency.component';
+import { CarbonCurrencyComponent } from "./components/currency/currency.component";
 // import { MaterialDayComponent } from './components/day/day.component';
-// import { MaterialTextareaComponent } from './components/textarea/textarea.component';
+import { CarbonTextareaComponent } from './components/textarea/textarea.component';
 import { CarbonColumnsComponent } from "./components/columns/columns.component";
 import { CarbonContainerComponent } from "./components/container/container.component";
 // import { MaterialCheckboxComponent } from './components/checkbox/checkbox.component';
 // import { MaterialFieldsetComponent } from './components/fieldset/fieldset.component';
-// import { MaterialContentComponent } from './components/content/content.component';
+import { CarbonContentComponent } from "./components/content/content.component";
 // import { MaterialSignatureComponent } from './components/signature/signature.component';
 // import { MaterialSurveyComponent } from './components/survey/survey.component';
-// import { MaterialSelectBoxesComponent } from './components/selectboxes/selectboxes.component';
-// import { MaterialRadioComponent } from './components/radio/radio.component';
-// import { MaterialSelectComponent } from './components/select/select.component';
+import { CarbonSelectBoxesComponent } from './components/selectboxes/selectboxes.component';
+import { CarbonRadioComponent } from "./components/radio/radio.component";
+import { CarbonSelectComponent } from './components/select/select.component';
 // import { MaterialPanelComponent } from './components/panel/panel.component';
 // import { MaterialTabsComponent } from './components/tabs/tabs.component';
 // import { MaterialTableComponent } from './components/table/table.component';
@@ -53,6 +54,8 @@ import {
   ButtonModule,
   DialogModule,
   CheckboxModule,
+  SelectModule,
+  RadioModule,
   InputModule,
   DocumentationModule,
 } from "carbon-components-angular";
@@ -65,18 +68,18 @@ export {
   CarbonButtonComponent,
   // MaterialButtonComponent,
   // CarbonTextfieldComponent,
-  // MaterialPasswordComponent,
+  CarbonPasswordComponent,
   // MaterialUrlComponent,
-  // MaterialEmailComponent,
-  // MaterialPhoneNumberComponent,
-  // MaterialNumberComponent,
-  // MaterialCurrencyComponent,
+  CarbonEmailComponent,
+  CarbonPhoneNumberComponent,
+  CarbonNumberComponent,
+  CarbonCurrencyComponent,
   // MaterialDayComponent,
   // MaterialHiddenComponent,
-  // MaterialHtmlComponent,
+  CarbonHtmlComponent,
   // MaterialTagsComponent,
   // MaterialTableComponent,
-  // MaterialTextareaComponent,
+  CarbonTextareaComponent,
   CarbonColumnsComponent,
   CarbonContainerComponent,
   // MaterialDataGridComponent,
@@ -84,12 +87,12 @@ export {
   // MaterialPanelComponent,
   // MaterialCheckboxComponent,
   // MaterialFieldsetComponent,
-  // MaterialContentComponent,
+  CarbonContentComponent,
   // MaterialSignatureComponent,
   // MaterialSurveyComponent,
-  // MaterialSelectBoxesComponent,
-  // MaterialRadioComponent,
-  // MaterialSelectComponent,
+  CarbonSelectBoxesComponent,
+  CarbonRadioComponent,
+  CarbonSelectComponent,
   // MaterialTabsComponent,
   // MaterialDateComponent,
   // MaterialWellComponent,
@@ -106,17 +109,17 @@ export {
     CarbonCheckboxComponent,
     // MaterialButtonComponent,
     CarbonTextfieldComponent,
-    // MaterialPasswordComponent,
+    CarbonPasswordComponent,
     // MaterialUrlComponent,
-    // MaterialEmailComponent,
-    // MaterialPhoneNumberComponent,
-    // MaterialNumberComponent,
-    // MaterialCurrencyComponent,
+    CarbonEmailComponent,
+    CarbonPhoneNumberComponent,
+    CarbonNumberComponent,
+    CarbonCurrencyComponent,
     // MaterialDayComponent,
     // MaterialHiddenComponent,
-    // MaterialHtmlComponent,
+    CarbonHtmlComponent,
     // MaterialTagsComponent,
-    // MaterialTextareaComponent,
+    CarbonTextareaComponent,
     CarbonColumnsComponent,
     CarbonContainerComponent,
     // MaterialDataGridComponent,
@@ -124,12 +127,12 @@ export {
     // MaterialPanelComponent,
     // MaterialCheckboxComponent,
     // MaterialFieldsetComponent,
-    // MaterialContentComponent,
+    CarbonContentComponent,
     // MaterialSignatureComponent,
     // MaterialSurveyComponent,
-    // MaterialSelectBoxesComponent,
-    // MaterialRadioComponent,
-    // MaterialSelectComponent,
+    CarbonSelectBoxesComponent,
+    CarbonRadioComponent,
+    CarbonSelectComponent,
     // MaterialTabsComponent,
     // MaterialTableComponent,
     // MaterialDateComponent,
@@ -146,17 +149,28 @@ export {
   imports: [
     CommonModule,
     FormsModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     ButtonModule,
     DialogModule,
+    RadioModule,
     CheckboxModule,
+    SelectModule,
     InputModule,
     DocumentationModule,
 
     // icons
     AddModule,
   ],
-  exports: [FormioComponent, ButtonModule, CheckboxModule, DialogModule],
+  exports: [
+    FormioComponent,
+    FlexLayoutModule,
+    ButtonModule,
+    RadioModule,
+    CheckboxModule,
+    SelectModule,
+    DialogModule,
+  ],
   entryComponents: [
     CarbonComponent,
     FormioComponent,
@@ -164,17 +178,17 @@ export {
     CarbonCheckboxComponent,
     // MaterialButtonComponent,
     CarbonTextfieldComponent,
-    // MaterialPasswordComponent,
+    CarbonPasswordComponent,
     // MaterialUrlComponent,
-    // MaterialEmailComponent,
-    // MaterialPhoneNumberComponent,
-    // MaterialNumberComponent,
-    // MaterialCurrencyComponent,
+    CarbonEmailComponent,
+    CarbonPhoneNumberComponent,
+    CarbonNumberComponent,
+    CarbonCurrencyComponent,
     // MaterialDayComponent,
     // MaterialHiddenComponent,
-    // MaterialHtmlComponent,
+    CarbonHtmlComponent,
     // MaterialTagsComponent,
-    // MaterialTextareaComponent,
+    CarbonTextareaComponent,
     CarbonColumnsComponent,
     CarbonContainerComponent,
     // MaterialDataGridComponent,
@@ -182,12 +196,12 @@ export {
     // MaterialPanelComponent,
     // MaterialCheckboxComponent,
     // MaterialFieldsetComponent,
-    // MaterialContentComponent,
+    CarbonContentComponent,
     // MaterialSignatureComponent,
     // MaterialSurveyComponent,
-    // MaterialSelectBoxesComponent,
-    // MaterialRadioComponent,
-    // MaterialSelectComponent,
+    CarbonSelectBoxesComponent,
+    CarbonRadioComponent,
+    CarbonSelectComponent,
     // MaterialTabsComponent,
     // MaterialTableComponent,
     // MaterialDateComponent,
