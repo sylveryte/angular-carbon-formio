@@ -1,0 +1,8 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "quotemark": false,
+    "directive-selector": [true, "attribute", "ibm", "camelCase"],
+    "component-selector": [true, "element", "ibm", "kebab-case"]
+  }
+}

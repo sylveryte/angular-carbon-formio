@@ -1,0 +1,13 @@
+<p *ngIf="isLoading">Loading Man....</p>
+<div *ngIf="!this.options?.disableAlerts">
+  <div
+    *ngFor="let alert of alerts.alerts"
+    class="alert alert-{{ alert.type }}"
+    role="alert"
+  >
+    {{ alert.message }}
+  </div>
+</div>
+<div>
+  <ng-template #formio></ng-template>
+</div>

@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angular-carbon-formio": [
+        "dist/angular-carbon-formio"
+      ],
+      "angular-carbon-formio/*": [
+        "dist/angular-carbon-formio/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
