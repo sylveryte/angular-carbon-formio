@@ -15,14 +15,14 @@
   <!-- syl -->
   <!-- [placeholder]="instance.component.placeholder" -->
   <!-- [multiple]="instance.component.multiple" -->
-  <ibm-select [formControl]="control" (selectionChange)="onChange()">
-    <div class="mat-option">
-      <input
-        class="mat-input-element"
-        placeholder="Type to search"
-        (input)="onFilter($event.target.value)"
-      />
-    </div>
+  <ibm-select [formControl]="control" (valueChange)="sylonChange($event)">
+    <!-- <div class="mat-option"> -->
+    <!--   <input -->
+    <!--     class="mat-input-element" -->
+    <!--     placeholder="Type to search" -->
+    <!--     (input)="onFilter($event.target.value)" -->
+    <!--   /> -->
+    <!-- </div> -->
     <!-- <option></option> -->
     <!-- <option *ngIf="!filteredOptionsLength" disabled> -->
     <!--   <span>Nothing was found</span> -->

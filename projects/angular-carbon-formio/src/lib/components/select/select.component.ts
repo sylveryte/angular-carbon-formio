@@ -26,7 +26,10 @@ export class CarbonSelectComponent extends CarbonComponent implements OnInit {
     });
 
     this.filteredOptions = this.selectOptions;
-    console.log("sylin", this.instance);
+  }
+
+  sylonChange(e) {
+    this.onChange();
   }
 
   onFilter(value) {

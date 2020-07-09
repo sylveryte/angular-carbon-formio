@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import { CarbonComponent } from '../CarbonComponent';
-import RadioComponent from 'formiojs/components/radio/Radio.js';
+import { Component } from "@angular/core";
+import { CarbonComponent } from "../CarbonComponent";
+import RadioComponent from "formiojs/components/radio/Radio.js";
 
 @Component({
-  selector: 'ibm-formio-radio',
-	templateUrl: './radio.component.html'
+  selector: "ibm-formio-radio",
+  templateUrl: "./radio.component.html",
 })
 export class CarbonRadioComponent extends CarbonComponent {
   getLayout() {
-    return this.instance.component.inline ? 'row' : 'column';
+    return this.instance.component.inline ? "row" : "column";
   }
 
   isRadioChecked(option) {
     return option.value === this.instance.dataValue;
+  }
+
+  sylonChange(e) {
+    this.onChange(false, e.value);
   }
 
   clearValue(event, option) {

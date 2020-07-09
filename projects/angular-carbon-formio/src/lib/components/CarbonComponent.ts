@@ -1,16 +1,24 @@
-import {Component, Input, ViewChild, ElementRef, ChangeDetectorRef, AfterViewInit, OnInit} from '@angular/core';
-import FormioComponent from './Base';
-import Validator from 'formiojs/validator/Validator.js';
-import { FormioControl } from '../FormioControl';
-import get from 'lodash/get';
+import {
+  Component,
+  Input,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+  AfterViewInit,
+  OnInit,
+} from "@angular/core";
+import FormioComponent from "./Base";
+import Validator from "formiojs/validator/Validator.js";
+import { FormioControl } from "../FormioControl";
+import get from "lodash/get";
 
 @Component({
-  selector: 'carbon-formio-comp',
-  template: '<p>Unknown Component: {{ instance.component.type }}</p>'
+  selector: "carbon-formio-comp",
+  template: "<p>Unknown Component: {{ instance.component.type }}</p>",
 })
 export class CarbonComponent implements AfterViewInit, OnInit {
   @Input() instance: any;
-  @ViewChild('input', {static: false}) input: ElementRef;
+  @ViewChild("input", { static: false }) input: ElementRef;
   @Input() control: FormioControl = new FormioControl();
   constructor(public element: ElementRef, public ref: ChangeDetectorRef) {}
 
@@ -29,12 +37,14 @@ export class CarbonComponent implements AfterViewInit, OnInit {
         this.storeFormData();
         this.validateOnInit();
       }
-      this.instance.component.defaultValue ? this.setValue(this.instance.component.defaultValue) : '';
+      this.instance.component.defaultValue
+        ? this.setValue(this.instance.component.defaultValue)
+        : "";
     }
   }
 
   validateOnInit() {
-    const {key} = this.instance.component;
+    const { key } = this.instance.component;
     const validationValue = this.getFormValue(this.instance.path);
 
     if (validationValue === null) {
@@ -45,8 +55,8 @@ export class CarbonComponent implements AfterViewInit, OnInit {
 
     const validationResult = Validator.checkComponent(
       this.instance,
-      {[key]: validationValue},
-      {[key]: validationValue}
+      { [key]: validationValue },
+      { [key]: validationValue }
     );
 
     if (validationResult.length) {
@@ -59,13 +69,20 @@ export class CarbonComponent implements AfterViewInit, OnInit {
   }
 
   storeFormData() {
-    if (this.instance.parent && this.instance.parent.submission && this.instance.parent.submission.data) {
-      sessionStorage.setItem('formData', JSON.stringify(this.instance.parent.submission.data));
+    if (
+      this.instance.parent &&
+      this.instance.parent.submission &&
+      this.instance.parent.submission.data
+    ) {
+      sessionStorage.setItem(
+        "formData",
+        JSON.stringify(this.instance.parent.submission.data)
+      );
     }
   }
 
   getFormValue(path) {
-    const formData = JSON.parse(sessionStorage.getItem('formData'));
+    const formData = JSON.parse(sessionStorage.getItem("formData"));
 
     if (!formData) {
       return null;
@@ -76,8 +93,8 @@ export class CarbonComponent implements AfterViewInit, OnInit {
 
   renderComponents() {}
 
-  onChange(keepInputRaw?: boolean) {
-    let value = this.getValue();
+  onChange(keepInputRaw?: boolean, sylRadioValue?: string) {
+    let value = sylRadioValue || this.getValue();
 
     if (value === undefined || value === null) {
       value = this.instance.emptyValue;
@@ -88,7 +105,7 @@ export class CarbonComponent implements AfterViewInit, OnInit {
       this.control.setValue(this.input.nativeElement.value);
       value = this.getValue();
     }
-    this.instance.updateValue(value, {modified: true});
+    this.instance.updateValue(value, { modified: true });
   }
 
   getValue() {
@@ -112,8 +129,10 @@ export class CarbonComponent implements AfterViewInit, OnInit {
       return;
     }
 
-    return this.instance.options.validateOnInit
-      || this.instance.parent.options.validateOnInit;
+    return (
+      this.instance.options.validateOnInit ||
+      this.instance.parent.options.validateOnInit
+    );
   }
 
   setDisabled(disabled) {
@@ -127,13 +146,13 @@ export class CarbonComponent implements AfterViewInit, OnInit {
   setVisible(visible) {
     if (this.element && this.element.nativeElement) {
       if (visible) {
-        this.element.nativeElement.removeAttribute('hidden');
-        this.element.nativeElement.style.visibility = 'visible';
-        this.element.nativeElement.style.position = 'relative';
+        this.element.nativeElement.removeAttribute("hidden");
+        this.element.nativeElement.style.visibility = "visible";
+        this.element.nativeElement.style.position = "relative";
       } else {
-        this.element.nativeElement.setAttribute('hidden', true);
-        this.element.nativeElement.style.visibility = 'hidden';
-        this.element.nativeElement.style.position = 'absolute';
+        this.element.nativeElement.setAttribute("hidden", true);
+        this.element.nativeElement.style.visibility = "hidden";
+        this.element.nativeElement.style.position = "absolute";
       }
     }
   }
@@ -142,7 +161,9 @@ export class CarbonComponent implements AfterViewInit, OnInit {
     if (this.element && this.element.nativeElement && this.instance) {
       // Add custom classes to elements.
       if (this.instance.component.customClass) {
-        this.element.nativeElement.classList.add(this.instance.component.customClass);
+        this.element.nativeElement.classList.add(
+          this.instance.component.customClass
+        );
       }
     }
 

@@ -9,8 +9,8 @@
     </ibm-label>
 
     <ibm-radio-group
-      (change)="onChange()"
       [formControl]="control"
+      (change)="sylonChange($event)"
       fxFlexOffset="10px"
       fxLayout="{{ getLayout() }}"
       fxLayoutGap="10px"

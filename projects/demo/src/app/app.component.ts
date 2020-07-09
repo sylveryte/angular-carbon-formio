@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { value1 as DEFAULT_VALUE } from "./syldata";
 
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,5 +19,6 @@ export class AppComponent {
 
   onSubmit(event: any) {
     this.submittedData = event.data;
+    console.log("submittedData", event.data);
   }
 }
