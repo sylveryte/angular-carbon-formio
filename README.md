@@ -1,27 +1,25 @@
 # AngularCarbonFormio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.28.
+This project is an angular library, that renders formio json input with carbon library components
 
-## Development server
+## Development setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+1. clone this repo `[root] == repo dir == angular-carbon-formio`
+1. install dependencies
+	`cd [root]` || `cd angular-carbon-formio`
+	`npm install`
+	`npm [root]/projects/angular-carbon-formio` || `npm  angular-carbon-formio/projects/angular-carbon-formio`
+	`npm install`
+	*note below commands assume you're in [root] dir*
+1. build the library
+		`ng build angular-carbon-formio`
+1. move built library into root dir's `node_modules`  *make sure to remove previous one if exists*
+		`mv dist/angular-carbon-formio node_modules`
+*note: combine above two steps*
+	`ng b angular-carbon-formio && rm -rf node_modules/angular-carbon-formio && mv dist/angular-carbon-formio node_modules`
+1. run demo application
+	`ng serve demo`
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`leafteam`
