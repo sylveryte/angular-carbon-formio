@@ -1,6 +1,5 @@
-import { Component } from "@angular/core";
-import { value1 as DEFAULT_VALUE } from "./syldata";
-
+import { Component, OnInit } from "@angular/core";
+import { BASIC, ADVANCE } from "./syldata";
 
 @Component({
   selector: "app-root",
@@ -9,16 +8,38 @@ import { value1 as DEFAULT_VALUE } from "./syldata";
 })
 export class AppComponent {
   title = "Carbon Formio Demo";
-  defaultValue = DEFAULT_VALUE;
+  defaultValue: any;
   submittedData: string;
+  basicData: any;
+  advanceData: any;
 
-  update(value: string): void {
-    this.defaultValue = JSON.parse(value);
-    console.log(JSON.parse(value));
+  testData = [
+    { content: "hi", selected: false },
+    { content: "there", selected: false },
+    { content: "general", selected: false },
+    { content: "kenobi", selected: false },
+  ];
+
+  constructor() {
+    this.basicData = BASIC;
+    this.advanceData = ADVANCE;
+  }
+
+  ngOnUnit() {
+    this.update(ADVANCE);
   }
 
   onSubmit(event: any) {
     this.submittedData = event.data;
     console.log("submittedData", event.data);
+  }
+
+  update(value: any): void {
+    if (typeof value == "string") {
+      this.defaultValue = JSON.parse(value);
+    } else {
+      this.defaultValue = value;
+    }
+    console.log(this.defaultValue);
   }
 }

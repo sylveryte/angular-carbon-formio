@@ -4,37 +4,50 @@
 ></ibm-formio-form-field>
 <ng-template #componentTemplate let-hasLabel>
   <!-- <mat-form-field fxFill> -->
-  <ibm-label *ngIf="hasLabel">
-    <span [instance]="instance" ibmFormioLabel></span>
-  </ibm-label>
+  <!-- <ibm-label *ngIf="hasLabel"> -->
+  <!--   <span [instance]="instance" ibmFormioLabel></span> -->
+  <!-- </ibm-label> -->
 
   <span *ngIf="instance.component.prefix" matPrefix>
     {{ instance.component.prefix }}&nbsp;
   </span>
 
   <!-- syl -->
-  <!-- [placeholder]="instance.component.placeholder" -->
-  <!-- [multiple]="instance.component.multiple" -->
-  <ibm-select [formControl]="control" (valueChange)="sylonChange($event)">
-    <!-- <div class="mat-option"> -->
-    <!--   <input -->
-    <!--     class="mat-input-element" -->
-    <!--     placeholder="Type to search" -->
-    <!--     (input)="onFilter($event.target.value)" -->
-    <!--   /> -->
-    <!-- </div> -->
-    <!-- <option></option> -->
-    <!-- <option *ngIf="!filteredOptionsLength" disabled> -->
-    <!--   <span>Nothing was found</span> -->
-    <!-- </option> -->
-    <option
-      *ngFor="let option of instance.component.data.values"
-      [value]="option.value"
-    >
-	{{option.label}}
-      <!-- <span [innerHTML]="option.label"></span> -->
-    </option>
-  </ibm-select>
+
+  <ibm-combo-box
+    [label]="instance.component.label"
+    [helperText]="instance.component.description"
+    [formControl]="control"
+    (selected)="sylonChange($event)"
+    [placeholder]="instance.component.placeholder"
+    [type]="instance.component.multiple ? 'multi' : 'single'"
+    [invalid]="instance.error"
+    [invalidText]="instance.error.message"
+    [items]="items"
+  >
+    <ibm-dropdown-list></ibm-dropdown-list>
+  </ibm-combo-box>
+
+  <!-- <ibm-select [formControl]="control" (valueChange)="sylonChange($event)"> -->
+  <!--   <!-1- <div class="mat-option"> -1-> -->
+  <!--   <!-1-   <input -1-> -->
+  <!--   <!-1-     class="mat-input-element" -1-> -->
+  <!--   <!-1-     placeholder="Type to search" -1-> -->
+  <!--   <!-1-     (input)="onFilter($event.target.value)" -1-> -->
+  <!--   <!-1-   /> -1-> -->
+  <!--   <!-1- </div> -1-> -->
+  <!--   <!-1- <option></option> -1-> -->
+  <!--   <!-1- <option *ngIf="!filteredOptionsLength" disabled> -1-> -->
+  <!--   <!-1-   <span>Nothing was found</span> -1-> -->
+  <!--   <!-1- </option> -1-> -->
+  <!--   <option -->
+  <!--     *ngFor="let option of instance.component.data.values" -->
+  <!--     [value]="option.value" -->
+  <!--   > -->
+  <!-- {{option.label}} -->
+  <!--     <!-1- <span [innerHTML]="option.label"></span> -1-> -->
+  <!--   </option> -->
+  <!-- </ibm-select> -->
 
   <span *ngIf="instance.component.suffix" matSuffix>
     {{ instance.component.suffix }}

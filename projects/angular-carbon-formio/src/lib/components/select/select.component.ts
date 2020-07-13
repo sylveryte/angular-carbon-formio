@@ -6,40 +6,41 @@ import SelectComponent from "formiojs/components/select/Select.js";
   templateUrl: "./select.component.html",
 })
 export class CarbonSelectComponent extends CarbonComponent implements OnInit {
-  selectOptions: Promise<any[]>;
-  filteredOptions: Promise<any[]>;
-  filteredOptionsLength: number;
+  items: Array<any>;
 
   selectOptionsResolve: any;
 
   setInstance(instance: any) {
     super.setInstance(instance);
     this.instance.triggerUpdate();
+    this.items = this.transformOptionForCarbon(
+      this.instance.component.data.values
+    );
   }
 
-  ngOnInit() {
-    this.selectOptions = new Promise((resolve) => {
-      this.selectOptionsResolve = resolve;
-    });
-    this.selectOptions.then((options) => {
-      this.filteredOptionsLength = options.length;
-    });
-
-    this.filteredOptions = this.selectOptions;
-  }
+  ngOnInit() {}
 
   sylonChange(e) {
+    console.log("instance  ", this.instance);
+    console.log("e===>", e);
     this.onChange();
   }
 
-  onFilter(value) {
-    this.filteredOptions = this.selectOptions.then((options) => {
-      const filtered = options.filter(
-        (option) => option.label.indexOf(value) !== -1
-      );
-      this.filteredOptionsLength = filtered.length;
-      return filtered;
+  transformOptionForCarbon(values) {
+    const transformed = new Array();
+    values.forEach((x) => {
+      transformed.push({
+        content: x.value,
+        selected: this.isDefaultValue(x.value),
+      });
     });
+    console.log("transformed ", transformed);
+    return transformed;
+  }
+
+  isDefaultValue(x) {
+    console.log(this.instance.defaultValue);
+    return this.instance.defaultValue.indexOf(x) >= 0 ? true : false;
   }
 }
 SelectComponent.CarbonComponent = CarbonSelectComponent;

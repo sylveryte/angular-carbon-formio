@@ -23,7 +23,7 @@ import { CarbonHtmlComponent } from "./components/html/html.component";
 // import { MaterialTagsComponent } from './components/tags/tags.component';
 import { CarbonCurrencyComponent } from "./components/currency/currency.component";
 // import { MaterialDayComponent } from './components/day/day.component';
-import { CarbonTextareaComponent } from './components/textarea/textarea.component';
+import { CarbonTextareaComponent } from "./components/textarea/textarea.component";
 import { CarbonColumnsComponent } from "./components/columns/columns.component";
 import { CarbonContainerComponent } from "./components/container/container.component";
 // import { MaterialCheckboxComponent } from './components/checkbox/checkbox.component';
@@ -31,9 +31,9 @@ import { CarbonContainerComponent } from "./components/container/container.compo
 import { CarbonContentComponent } from "./components/content/content.component";
 // import { MaterialSignatureComponent } from './components/signature/signature.component';
 // import { MaterialSurveyComponent } from './components/survey/survey.component';
-import { CarbonSelectBoxesComponent } from './components/selectboxes/selectboxes.component';
+import { CarbonSelectBoxesComponent } from "./components/selectboxes/selectboxes.component";
 import { CarbonRadioComponent } from "./components/radio/radio.component";
-import { CarbonSelectComponent } from './components/select/select.component';
+import { CarbonSelectComponent } from "./components/select/select.component";
 // import { MaterialPanelComponent } from './components/panel/panel.component';
 // import { MaterialTabsComponent } from './components/tabs/tabs.component';
 // import { MaterialTableComponent } from './components/table/table.component';
@@ -54,7 +54,8 @@ import {
   ButtonModule,
   DialogModule,
   CheckboxModule,
-  SelectModule,
+  ComboBoxModule,
+  DropdownModule,
   RadioModule,
   InputModule,
   DocumentationModule,
@@ -153,9 +154,10 @@ export {
     ReactiveFormsModule,
     ButtonModule,
     DialogModule,
+    DropdownModule,
     RadioModule,
     CheckboxModule,
-    SelectModule,
+    ComboBoxModule,
     InputModule,
     DocumentationModule,
 
@@ -166,9 +168,10 @@ export {
     FormioComponent,
     FlexLayoutModule,
     ButtonModule,
+    DropdownModule,
     RadioModule,
     CheckboxModule,
-    SelectModule,
+    ComboBoxModule,
     DialogModule,
   ],
   entryComponents: [

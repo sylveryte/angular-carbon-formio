@@ -4,13 +4,26 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
-import { CarbonFormioModule } from "dist/angular-carbon-formio";
+import { CarbonFormioModule } from "angular-carbon-formio";
 
-import { ButtonModule, InputModule } from 'carbon-components-angular';
+import {
+  ButtonModule,
+  ComboBoxModule,
+  DropdownModule,
+  InputModule,
+} from "carbon-components-angular";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CarbonFormioModule, ButtonModule, InputModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CarbonFormioModule,
+    ButtonModule,
+    InputModule,
+    DropdownModule,
+    ComboBoxModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

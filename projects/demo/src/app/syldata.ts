@@ -1,4 +1,234 @@
-export const value0 = {
+export const ADVANCE = {
+  components: [
+    {
+      label: "Url",
+      tableView: true,
+      key: "url",
+      type: "url",
+      input: true,
+    },
+    {
+      label: "Phone Number",
+      tableView: true,
+      key: "phoneNumber",
+      type: "phoneNumber",
+      input: true,
+    },
+    {
+      label: "Email",
+      tableView: true,
+      key: "email",
+      type: "email",
+      input: true,
+    },
+    {
+      label: "Tags",
+      tableView: false,
+      key: "tags",
+      type: "tags",
+      input: true,
+    },
+    {
+      label: "Address",
+      tableView: false,
+      provider: "nominatim",
+      key: "address",
+      type: "address",
+      input: true,
+      components: [
+        {
+          label: "Address 1",
+          tableView: false,
+          key: "address1",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+        {
+          label: "Address 2",
+          tableView: false,
+          key: "address2",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+        {
+          label: "City",
+          tableView: false,
+          key: "city",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+        {
+          label: "State",
+          tableView: false,
+          key: "state",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+        {
+          label: "Country",
+          tableView: false,
+          key: "country",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+        {
+          label: "Zip Code",
+          tableView: false,
+          key: "zip",
+          type: "textfield",
+          input: true,
+          customConditional:
+            "show = _.get(instance, 'parent.manualMode', false);",
+        },
+      ],
+    },
+    {
+      label: "Date / Time",
+      tableView: false,
+      enableMinDateInput: false,
+      datePicker: {
+        disableWeekends: false,
+        disableWeekdays: false,
+      },
+      enableMaxDateInput: false,
+      key: "dateTime",
+      type: "datetime",
+      input: true,
+      suffix: '<i ref="icon" class="fa fa-calendar" style=""></i>',
+      widget: {
+        type: "calendar",
+        displayInTimezone: "viewer",
+        language: "en",
+        useLocaleSettings: false,
+        allowInput: true,
+        mode: "single",
+        enableTime: true,
+        noCalendar: false,
+        format: "yyyy-MM-dd hh:mm a",
+        hourIncrement: 1,
+        minuteIncrement: 1,
+        time_24hr: false,
+        minDate: null,
+        disableWeekends: false,
+        disableWeekdays: false,
+        maxDate: null,
+      },
+    },
+    {
+      label: "Day",
+      hideInputLabels: false,
+      inputsLabelPosition: "top",
+      useLocaleSettings: false,
+      tableView: false,
+      fields: {
+        day: {
+          hide: false,
+        },
+        month: {
+          hide: false,
+        },
+        year: {
+          hide: false,
+        },
+      },
+      key: "day",
+      type: "day",
+      input: true,
+      defaultValue: "00/00/0000",
+    },
+    {
+      label: "Time",
+      tableView: true,
+      key: "time",
+      type: "time",
+      input: true,
+      inputMask: "99:99",
+    },
+    {
+      label: "Currency",
+      mask: false,
+      spellcheck: true,
+      tableView: false,
+      currency: "USD",
+      inputFormat: "plain",
+      key: "currency",
+      type: "currency",
+      input: true,
+      delimiter: true,
+    },
+    {
+      label: "Survey",
+      tableView: false,
+      questions: [
+        {
+          label: "Eat",
+          value: "eat",
+        },
+        {
+          label: "Sleep",
+          value: "sleep",
+        },
+        {
+          label: "Code",
+          value: "code",
+        },
+        {
+          label: "Repeat",
+          value: "repeat",
+        },
+      ],
+      values: [
+        {
+          label: "Morning",
+          value: "morning",
+        },
+        {
+          label: "Evening",
+          value: "evening",
+        },
+        {
+          label: "Night",
+          value: "night",
+        },
+      ],
+      key: "survey",
+      type: "survey",
+      input: true,
+      defaultValue: {
+        eat: "morning",
+        sleep: "evening",
+        code: "night",
+        repeat: "evening",
+      },
+    },
+    {
+      label: "Signature",
+      tableView: false,
+      key: "signature",
+      type: "signature",
+      input: true,
+    },
+    {
+      type: "button",
+      label: "Submit",
+      key: "submit",
+      disableOnInvalid: true,
+      input: true,
+      tableView: false,
+    },
+  ],
+};
+export const BASIC_MORE = {
   components: [
     {
       label: "Name",
@@ -181,7 +411,7 @@ export const value0 = {
   ],
 };
 
-export const value1 = {
+export const BASIC = {
   components: [
     {
       label: "First Name",
